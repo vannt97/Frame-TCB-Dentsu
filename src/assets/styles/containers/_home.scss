@@ -1,0 +1,662 @@
+#home {
+  #kv {
+    img {
+      width: 100%;
+      aspect-ratio: 375/300;
+      object-fit: cover;
+      @include responsive(md-screen) {
+        aspect-ratio: 70/30;
+      }
+    }
+  }
+
+  .journey {
+    &-left {
+      .ct-custom-left {
+        padding-top: 5.6rem;
+        padding-bottom: 0;
+      }
+      &::after {
+        display: none;
+      }
+      @include responsive(md-screen) {
+        .ct-custom-left {
+          padding-top: 5rem;
+          padding-bottom: 0;
+        }
+      }
+      @include responsive(lg-screen) {
+        .ct-custom-left {
+          padding-top: 6rem;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    &-right {
+      @include responsive(md-screen) {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+        // padding-left: 2.4rem;
+      }
+
+      @include responsive(lg-screen) {
+        .ct-custom-right {
+          padding-top: 4rem;
+          padding-bottom: 6rem;
+          padding-left: 6.8rem;
+          padding-left: 6.8rem;
+          text-align: justify;
+          text-align-last: center;
+        }
+      }
+    }
+
+    &-title-wrapper-2-3 {
+    }
+  }
+}
+
+.video-kv {
+  width: 100%;
+  // aspect-ratio: 375/300;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+  @include responsive(md-screen) {
+    aspect-ratio: 70/30;
+    background-size: cover;
+  }
+}
+
+.agenda {
+  background-color: $bg-secondary;
+  position: relative;
+  // overflow: hidden;
+  &-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background-image: url("/assets/images/agenda-bg.png");
+    // background: linear-gradient(
+    //   360deg,
+    //   rgba(252, 252, 250, 0) 0%,
+    //   #322e2e 100%
+    // );
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include responsive(md-screen) {
+      height: 200px;
+      background-size: contain;
+    }
+    @include responsive(lg-screen) {
+      height: 275px;
+    }
+  }
+  &-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/images/frame-agenda.png");
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include responsive(md-screen) {
+      background-size: auto;
+    }
+  }
+  &-title {
+    position: relative;
+    font-size: 2.4rem;
+    line-height: 2rem;
+    letter-spacing: 0.6rem;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 8rem;
+    padding-bottom: 3.2rem;
+    text-transform: uppercase;
+    color: $color-text-black;
+    span {
+      font-weight: 700;
+      letter-spacing: 0.32rem;
+      font-size: 3.2rem;
+      line-height: 4rem;
+      // @include responsive(sm-screen) {
+      //   font-size: 2.4rem;
+      // }
+      // @include responsive(lg-screen) {
+      //   font-size: 4.8rem;
+      //   line-height: 6.4rem;
+      // }
+    }
+
+    @include responsive(sm-screen) {
+      span {
+        font-size: 2.4rem;
+        line-height: 3.6rem;
+      }
+    }
+
+    @include responsive(md-screen) {
+      padding-top: 14rem;
+      font-size: 4.8rem;
+      line-height: 6.4rem;
+      letter-spacing: 1.92rem;
+      font-weight: 400;
+      span {
+        font-size: 4.8rem;
+        line-height: 6.4rem;
+        letter-spacing: 0.32rem;
+      }
+    }
+
+    @include responsive(lg-screen) {
+      font-size: 4.8rem;
+      line-height: 6.4rem;
+      letter-spacing: 1.92rem;
+      span {
+        font-size: 4.8rem;
+        line-height: 6.4rem;
+        letter-spacing: 1.92rem;
+      }
+    }
+  }
+
+  &-desc {
+    padding-right: 2.4rem;
+    padding-top: 0;
+    padding-bottom: 4.8rem;
+    position: relative;
+    height: 100%;
+    h3 {
+      line-height: 3rem;
+      letter-spacing: 0.45rem;
+      margin-bottom: 2.4rem;
+      text-transform: uppercase;
+      color: $color-text-black;
+      span {
+        font-size: 2.8rem;
+        text-wrap: nowrap;
+        display: block;
+        font-weight: 700;
+        letter-spacing: normal;
+      }
+    }
+    p {
+      text-align: justify;
+      color: $color-text-grey;
+      margin-bottom: 4rem;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      width: 0.5px;
+      height: 100%;
+      background-color: $bg-primary;
+      opacity: 0.2;
+    }
+
+    @include responsive(md-screen) {
+      padding-right: 4rem;
+      h3 {
+        font-size: 2.4rem;
+        line-height: 3.6rem;
+        letter-spacing: 0.96rem;
+        span {
+          font-size: 3.6rem;
+          text-wrap: wrap;
+        }
+      }
+    }
+  }
+
+  &-line {
+    height: 0.5px;
+    width: 100%;
+    background-color: $bg-primary;
+    opacity: 0.2;
+  }
+
+  &-img {
+    padding-left: 2.4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    height: 100%;
+    &-swiper {
+      height: 100%;
+      background-image: url("/assets/images/agenda-img-en-mobile.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      aspect-ratio: 821/462;
+      @include responsive(md-screen) {
+        background-image: url("/assets/images/agenda-img-en.jpg");
+      }
+    }
+
+    @include responsive(lg-screen) {
+      padding-left: 4rem;
+    }
+  }
+
+  @include responsive(lg-screen) {
+    &-desc {
+      padding-top: 6.4rem;
+      padding-bottom: 6.4rem;
+      h3 {
+        margin-bottom: 4rem;
+      }
+      p {
+        text-align: right;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.timeline {
+  padding-top: 4rem;
+  padding-bottom: 0;
+  color: $color-text-black;
+  background-color: $bg-secondary;
+  text-align: center;
+  h2 {
+    font-size: 2.4rem;
+    letter-spacing: 0.5rem;
+    line-height: 3.6rem;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    text-align: center;
+    span {
+      display: block;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: normal;
+      text-align: center;
+      position: relative;
+      left: -4px;
+    }
+  }
+
+  &-progress {
+    text-align: left;
+    color: $border-color-yellow-2;
+
+    &-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        rgba(233, 180, 74, 0) 0%,
+        #e9b44a 17%,
+        #e9b44a 83.5%,
+        rgba(233, 180, 74, 0) 100%
+      );
+    }
+    .swiper-slide {
+      padding-left: 6rem;
+    }
+    &-item {
+      position: relative;
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+    &-circle {
+      width: 76px;
+      height: 76px;
+      border: 3px solid $border-color-yellow-2;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      transition: 0.4s all;
+      background-color: $bg-secondary;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
+      span {
+        text-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+      &-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $bg-secondary;
+        border-radius: inherit;
+        transition: 0.4s all;
+
+        z-index: 2;
+      }
+      &-pulse {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: $border-color-yellow-2;
+        border-radius: inherit;
+        opacity: 0.8;
+        animation: pluseAnimate 2s ease-out infinite;
+        animation-delay: 1s;
+        z-index: 1;
+        @keyframes pluseAnimate {
+          100% {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+      }
+    }
+    &-circle:hover {
+      scale: 1.2;
+      color: $color-text-primary;
+      background-color: $bg-yellow;
+      .timeline-progress-circle-bg {
+        background-color: $bg-yellow;
+      }
+    }
+    &-info {
+      display: flex;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      gap: 2rem;
+      color: $color-text-black;
+      font-size: 1.8rem;
+      align-items: center;
+    }
+    &-btn {
+      .btn {
+        background-color: $bg-secondary;
+      }
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      &.swiper-button-disabled {
+        .btn {
+          background-color: $bg-gray;
+          pointer-events: none;
+        }
+      }
+    }
+    &-prev {
+      left: -25px;
+    }
+    &-next {
+      right: -25px;
+    }
+    &-message {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      color: $color-text-grey-2;
+      text-align: center;
+    }
+    .swiper-message {
+      .swiper-slide {
+        padding-left: 0;
+      }
+    }
+    &.mobile {
+      .swiper-slide {
+        padding-left: 0;
+      }
+      .timeline-progress-item {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+      }
+
+      .timeline-progress-info {
+        justify-content: center;
+      }
+      .timeline-progress-circle {
+        margin: 0 auto;
+        padding: 0 0.5rem;
+      }
+    }
+  }
+
+  @include responsive(md-screen) {
+    padding-bottom: 5rem;
+  }
+
+  @include responsive(lg-screen) {
+    padding-top: 5.6rem;
+    padding-bottom: 5.6rem;
+    h2 {
+      font-size: 4.8rem;
+      letter-spacing: 1rem;
+      line-height: 6.4rem;
+      margin-bottom: 6.4rem;
+      span {
+        display: inline;
+        font-size: 4.8rem;
+      }
+    }
+
+    // &-progress {
+    //   &-item {
+    //     width: 50rem;
+    //   }
+    // }
+  }
+}
+.vi {
+  .timeline {
+    h2 {
+      letter-spacing: 0.32rem;
+    }
+  }
+}
+
+@keyframes translation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.vi {
+  .agenda {
+    &-title {
+      letter-spacing: 0.32rem;
+      span {
+        letter-spacing: 0.32rem;
+        display: block;
+        text-wrap: balance;
+        transform: translateX(0);
+        @include responsive(md-screen) {
+          transform: translateX(0);
+        }
+        @include responsive(lg-screen) {
+          display: inline-block;
+        }
+      }
+      // letter-spacing: 0.32rem;
+    }
+    &-desc {
+      h3 {
+        font-weight: 300;
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+    &-img {
+      &-swiper {
+        background-image: url("/assets/images/agenda-img-vn-mobile.jpg");
+        @include responsive(md-screen) {
+          background-image: url("/assets/images/agenda-img-vn.jpg");
+        }
+      }
+    }
+  }
+  .timeline {
+    h2 {
+      span {
+        left: 0;
+      }
+    }
+  }
+}
+// .vi.agenda {
+//   &-title {
+//     letter-spacing: 0.32rem;
+//   }
+//   &-desc {
+//     h3 {
+//       font-weight: 300;
+//       span {
+//         font-weight: 500;
+//       }
+//     }
+//   }
+// }
+// .events {
+//   &-item {
+//     aspect-ratio: 467/580;
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     position: relative;
+//     &:nth-child(1) {
+//       background-image: url("/assets/images/the-30y.png");
+//     }
+//     &:nth-child(2) {
+//       background-image: url("/assets/images/the-csr.png");
+//     }
+//     &:nth-child(3) {
+//       background-image: url("/assets/images/the-event.png");
+//     }
+
+//     p {
+//       font-size: 1.8rem;
+//       line-height: 2.8rem;
+//       span {
+//         font-size: 4.8rem;
+//         line-height: 4rem;
+//         font-weight: 700;
+//         display: block;
+//         font-style: italic;
+//       }
+//       position: absolute;
+//       left: 3.2rem;
+//       top: 3.2rem;
+//     }
+
+//     @include responsive(md-screen) {
+//       p {
+//         font-size: 2.4rem;
+//         line-height: 3.6rem;
+//         span {
+//           font-size: 6.4rem;
+//           line-height: 7rem;
+//         }
+//       }
+//     }
+//   }
+// }
+// &-progress {
+//   padding-top: 10rem;
+//   padding-bottom: 10rem;
+//   overflow: hidden;
+//   -webkit-mask-image: linear-gradient(
+//     90deg,
+//     transparent 0,
+//     #fff 10%,
+//     #fff 90%,
+//     transparent
+//   );
+//   mask-image: linear-gradient(
+//     90deg,
+//     transparent 0,
+//     #fff 10%,
+//     #fff 90%,
+//     transparent
+//   );
+
+//   &-ct {
+//     animation-name: translation;
+//     animation-duration: 80s;
+//     animation-timing-function: linear;
+//     animation-iteration-count: infinite;
+//   }
+
+//   &-square {
+//     border: 2px solid $bg-primary;
+//     width: 2.4rem;
+//     height: 2.4rem;
+//     margin: 0 auto;
+//     background-color: $bg-secondary;
+//     position: relative;
+//     z-index: 3;
+//   }
+
+//   &-item {
+//     width: 15rem;
+//     position: relative;
+//     &:nth-child(odd) {
+//       .timeline-progress-label {
+//         top: -9.6rem;
+//       }
+//     }
+//     &:nth-child(even) {
+//       .timeline-progress-label {
+//         bottom: -9.6rem;
+//       }
+//     }
+//   }
+
+//   &-label {
+//     text-transform: uppercase;
+//     position: absolute;
+//     left: 50%;
+//     width: 100%;
+//     transform: translateX(-50%);
+//     text-wrap: nowrap;
+//     p {
+//       font-size: 1.8rem;
+//       font-weight: 700;
+//       line-height: 3.6rem;
+//     }
+//     span {
+//       font-size: 1.4rem;
+//       display: block;
+//       font-weight: 600;
+//       line-height: 2.8rem;
+//       opacity: 0.8;
+//       text-transform: capitalize;
+//       color: $color-text-brown;
+//     }
+//   }
+
+//   &-line {
+//     position: absolute;
+//     height: 4px;
+//     width: 100%;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     background-color: $bg-primary;
+//   }
+// }

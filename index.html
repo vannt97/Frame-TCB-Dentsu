@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg" />
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="same-origin" />
+
+    <!-- FB -->
+    <meta property="og:url" content="landing.octokit.co" />
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:image:url" content="./assets/images/kv.jpg" />
+    <meta property="og:image:type" content="website" />
+    <!-- FB -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="landing.octokit.co" />
+
+    <meta property="twitter:image" content="./assets/images/kv.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="title" content="CapitaLand kỉ niệm 30 năm hoạt động" />
+    <meta
+      name="description"
+      content="Mừng kỷ niệm 30 năm của CapitaLand, chúng tôi xin được dành dịp đặc biệt này để tri ân tất cả các đối tác đã cùng đồng hành, và trao đi giá trị tới cộng đồng đã gắn bó cùng chúng tôi suốt thời gian qua."
+    />
+    <meta property="og:title" content="CapitaLand kỉ niệm 30 năm hoạt động" />
+    <meta
+      property="og:description"
+      content="Mừng kỷ niệm 30 năm của CapitaLand, chúng tôi xin được dành dịp đặc biệt này để tri ân tất cả các đối tác đã cùng đồng hành, và trao đi giá trị tới cộng đồng đã gắn bó cùng chúng tôi suốt thời gian qua."
+    />
+    <meta property="og:image" content="./assets/images/kv.jpg" />
+    <meta
+      property="og:image:alt"
+      content="CapitaLand kỉ niệm 30 năm hoạt động"
+    />
+    <meta
+      property="og:site_name"
+      content="CapitaLand kỉ niệm 30 năm hoạt động"
+    />
+    <meta
+      property="twitter:title"
+      content="CapitaLand kỉ niệm 30 năm hoạt động"
+    />
+    <meta
+      property="twitter:description"
+      content="Mừng kỷ niệm 30 năm của CapitaLand, chúng tôi xin được dành dịp đặc biệt này để tri ân tất cả các đối tác đã cùng đồng hành, và trao đi giá trị tới cộng đồng đã gắn bó cùng chúng tôi suốt thời gian qua."
+    />
+    <title>CapitaLand kỉ niệm 30 năm hoạt động</title>
+  </head>
+  <body>
+    <img
+      loading="lazy"
+      src="./assets/images/kv.jpg"
+      style="display: none"
+      alt=""
+    />
+    <div id="root"></div>
+    <script>
+      Window.IS_REMOVE_BG = 1; // 0: false, 1: true
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: 780476796789685,
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v15.0",
+        });
+      };
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-HZXSMXD7HT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-HZXSMXD7HT");
+    </script>
+  </body>
+</html>

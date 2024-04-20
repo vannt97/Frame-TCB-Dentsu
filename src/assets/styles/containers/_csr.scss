@@ -1,0 +1,182 @@
+.csr-gallery {
+  // border-top: 0.5px solid rgba($color: #fff, $alpha: 0.5);
+
+  .donation {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    text-align: center;
+    &-title {
+    }
+    &-amount {
+      font-size: 3.2rem;
+      line-height: 4rem;
+      gap: 0.5rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+
+      &-number {
+        width: 32px;
+        height: 40px;
+        background-color: $bg-black-1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-dot {
+      }
+
+      @include responsive(lg-screen) {
+        font-size: 6.4rem;
+        line-height: 8rem;
+        gap: 1rem;
+        &-number {
+          width: 88px;
+          height: 88px;
+        }
+      }
+    }
+  }
+
+  .winners {
+    padding-bottom: 5rem;
+
+    &-title {
+    }
+
+    &-person {
+      position: relative;
+      aspect-ratio: 413/560;
+
+      img {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+      }
+      &-card {
+        position: absolute;
+        width: 90%;
+        background-color: $bg-white;
+        bottom: 10px;
+        display: flex;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 1rem 2rem;
+        color: $color-text-black;
+        justify-content: space-between;
+        align-items: center;
+        p {
+          font-size: 1.8rem;
+          line-height: 2.8rem;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        @include responsive(md-screen) {
+          p {
+            font-size: 2.4rem;
+            line-height: 3.6rem;
+          }
+        }
+      }
+
+      .detail-likes-donated {
+        font-size: 14px;
+        @include responsive(md-screen) {
+          font-size: inherit;
+        }
+      }
+    }
+
+    .ct-custom {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .ar-game {
+    background-image: url("/assets/images/frame-agenda.png");
+    background-repeat: no-repeat;
+    background-position: 100% top;
+    background-color: rgba(249, 249, 245, 1);
+    color: $color-text-black;
+    &-dash {
+      width: 100%;
+      height: 1px;
+      background-color: $bg-primary;
+    }
+    &-left {
+      border: none;
+      padding-right: 0;
+      @include responsive(lg-screen) {
+        border-right: 1px solid $border-color-black;
+        padding-right: 5rem;
+      }
+    }
+    &-right {
+      padding-left: 0;
+      padding-top: 4rem;
+      padding-bottom: 6rem;
+      @include responsive(md-screen) {
+        padding-top: 6rem;
+        padding-left: 5rem;
+      }
+    }
+    &-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      button {
+        width: 100%;
+        background-color: transparent;
+        &::after {
+          border-color: $border-color-black;
+        }
+        &:hover {
+          background-color: $bg-primary;
+          color: white;
+        }
+        @include responsive(md-screen) {
+          width: inherit;
+        }
+      }
+    }
+    // &-h-1 {
+    //   font-size: 4.8rem;
+    //   text-transform: uppercase;
+    //   line-height: 6.4rem;
+    // }
+    // &-h-2{
+    //   font-size: 2.4rem;
+    // }
+  }
+
+  .performance {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    .detail-likes-donated {
+      gap: 0.2rem;
+      font-size: 14px;
+      color: white !important;
+      flex-wrap: wrap;
+      > span {
+        color: $color-text-primary;
+        > span {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+      > span:nth-child(2) {
+        display: none;
+      }
+
+      @include responsive(md-screen) {
+        gap: 1.2rem;
+        > span:nth-child(2) {
+          display: block;
+        }
+        flex-wrap: nowrap;
+      }
+    }
+  }
+}

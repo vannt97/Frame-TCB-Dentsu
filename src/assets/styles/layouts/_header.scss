@@ -1,0 +1,109 @@
+.header {
+  height: 72px;
+  &-container {
+    position: fixed !important;
+    top: 0;
+    z-index: 99 !important;
+    width: 100%;
+    display: flex;
+    background-color: #000;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+  }
+
+  &-nav {
+    display: none;
+    @include responsive(lg-screen) {
+      display: flex;
+    }
+  }
+
+  &-nav__item {
+    font-weight: 600;
+    line-height: 2.8rem;
+    text-align: center;
+    &:nth-child(1) {
+      width: 242px;
+      justify-content: end;
+      & > div {
+        width: fit-content;
+        justify-content: end;
+      }
+    }
+    &:nth-child(2) {
+      width: 242px;
+    }
+    &:nth-child(3) {
+      width: 242px;
+    }
+    &:nth-child(4) {
+      width: 242px;
+    }
+    a {
+      transition: none;
+    }
+    &.active {
+      a {
+        color: $color-text-brown;
+      }
+      & > div {
+        &::after {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background-color: $color-text-brown;
+        }
+      }
+    }
+  }
+
+  &-sign-in {
+    display: none;
+    @include responsive(lg-screen) {
+      display: flex;
+    }
+  }
+
+  &-icon {
+    width: 136px;
+    @include responsive(md-screen) {
+      width: auto;
+    }
+  }
+
+  &-modal {
+    .ant-modal-content {
+      background-color: rgba($color: #000000, $alpha: 0.7);
+    }
+
+    .ant-modal-close {
+      border-radius: 50%;
+      background-color: $bg-brown;
+    }
+  }
+
+  &-signin-modal {
+    .ant-modal-content {
+      background-color: #000;
+      border-radius: 1px;
+    }
+
+    .ant-modal-close {
+      display: none;
+    }
+  }
+
+  &-nav-mobile {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    li {
+      color: white;
+      background-color: rgba($color: #000000, $alpha: 0.8);
+    }
+  }
+}
+

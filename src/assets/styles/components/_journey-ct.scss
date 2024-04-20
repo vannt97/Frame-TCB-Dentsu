@@ -1,0 +1,253 @@
+.journey {
+  background-image: url("/assets/images/frame-1.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-color: $bg-black-2;
+  background-size: contain;
+  &-left {
+    position: relative;
+    height: 100%;
+
+    .ct-custom-left {
+      width: 100%;
+      padding-top: 5.6rem;
+      padding-bottom: 5.6rem;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 0.5px;
+      right: 0;
+      bottom: 0;
+      background-color: white;
+      opacity: 0.5;
+    }
+
+    @include responsive(md-screen) {
+      .ct-custom-left {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+    }
+
+    @include responsive(lg-screen) {
+      .ct-custom-left {
+        padding-top: 11rem;
+        padding-bottom: 11rem;
+      }
+    }
+  }
+
+  &-right {
+    font-weight: 400;
+    line-height: 2.8rem;
+    opacity: 0.8;
+
+    .ct-custom-right {
+      padding-top: 4rem;
+      padding-bottom: 5rem;
+      padding-left: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    @include responsive(md-screen) {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      // padding-left: 2.4rem;
+    }
+
+    @include responsive(lg-screen) {
+      .ct-custom-right {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+        padding-left: 4.2rem;
+      }
+    }
+  }
+
+  @include responsive(lg-screen) {
+    background-size: auto;
+  }
+}
+.journey {
+  &-title-1 {
+    // font-family: "Inter";
+    line-height: 1.7rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    text-align: left;
+    @include responsive(lg-screen) {
+      text-align: center;
+    }
+  }
+  &-title-2 {
+    font-size: 4rem;
+    line-height: 6.4rem;
+    letter-spacing: 0.32rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  &-title-3 {
+    font-size: 4rem;
+    line-height: 3rem;
+    letter-spacing: 0.32rem;
+    position: relative;
+    span {
+      font-size: 2rem;
+      top: -15px;
+      line-height: 0rem;
+      font-style: italic;
+      opacity: 0.7;
+      position: relative;
+      letter-spacing: 0.16rem;
+    }
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  @include responsive(md-screen) {
+    &-title-1 {
+      font-size: 4rem;
+      line-height: 5.6rem;
+      letter-spacing: 1.6rem;
+      &-custom{
+        line-height: normal;
+        font-size: 3.2rem;
+        display: inline-block;
+        transform: translateY(-5px);
+      }
+    }
+    &-title-2 {
+      font-size: 8rem;
+      line-height: 10.4rem;
+      letter-spacing: 0.32rem;
+    }
+    &-title-3 {
+      font-size: 8rem;
+      line-height: 10.4rem;
+      letter-spacing: 0.32rem;
+      span {
+        font-size: 4rem;
+        top: -25px;
+        line-height: 5.6rem;
+      }
+    }
+  }
+
+  &-title-wrapper-2-3 {
+    @include responsive(lg-screen) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .journey-title-2 {
+        margin-right: 2.4rem;
+      }
+      .journey-title-3 span {
+        top: -20px;
+      }
+    }
+  }
+}
+
+.vi {
+  .journey-ct {
+    .journey {
+      &-title-1 {
+        // font-family: "Gill Sans";
+        // font-weight: 300;
+        letter-spacing: 0.3rem;
+      }
+
+      &-title-2 {
+        font-size: 3.2rem;
+        // font-weight: 500;
+        // line-height: 4rem;
+      }
+
+      &-title-3 {
+        font-size: 3.2rem;
+        // font-weight: 500;
+        // line-height: 4rem;
+        span {
+          top: -8px;
+          // font-weight: 300;
+          // font-family: "Open Sans";
+        }
+      }
+
+      @include responsive(xxs-screen) {
+        &-title-1 {
+          letter-spacing: 0.6rem;
+        }
+      }
+
+      @include responsive(md-screen) {
+        &-title-1 {
+          font-size: 4rem;
+          letter-spacing: 1.6rem;
+        }
+        &-title-2 {
+          font-size: 8rem;
+          // line-height: 10.4rem;
+        }
+        &-title-3 {
+          font-size: 8rem;
+          // line-height: 7.4rem;
+          span {
+            top: -25px;
+            font-size: 4rem;
+          }
+        }
+      }
+
+      @include responsive(lg-screen) {
+        &-title-1 {
+          letter-spacing: 0.6rem;
+        }
+      }
+
+      @include responsive(xxl-screen) {
+        &-title-1 {
+          letter-spacing: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+.vi {
+  .ct-custom-left {
+    padding-left: 0;
+    text-align: center;
+  }
+  .journey {
+    &-title-1 {
+      text-align: center;
+    }
+    &-title-wrapper-2-3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .journey-title-2 {
+        margin-right: 1rem;
+      }
+      @include responsive(lg-screen) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .journey-title-2 {
+          margin-right: 2.4rem;
+        }
+      }
+    }
+    &-right {
+      .ct-custom-right {
+        padding-top: 2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.detail-post {
+  &-breadcrumbs {
+    // border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+    // border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    text-transform: uppercase;
+    .ant-breadcrumb {
+      // font-family: "NotoSans";
+      font-family: inherit;
+    }
+    .ant-breadcrumb ol {
+      justify-content: center;
+      @include responsive(md-screen) {
+        justify-content: left;
+      }
+    }
+  }
+  &-content {
+    // border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+    p {
+      margin-bottom: 2rem;
+    }
+    a {
+      color: white !important;
+    }
+  }
+}

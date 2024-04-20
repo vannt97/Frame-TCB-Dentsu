@@ -1,0 +1,23 @@
+.container-frame {
+  &-1 {
+    background-image: url("/assets/images/frame.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  &-2 {
+    background-image: url("/assets/images/frame-1.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
+  }
+
+  @include responsive(md-screen) {
+    &-1 {
+      background-size: auto;
+    }
+
+    &-2{
+        background-size: auto;
+    }
+  }
+}

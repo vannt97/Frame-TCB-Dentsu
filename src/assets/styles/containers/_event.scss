@@ -1,0 +1,48 @@
+.celebration-event {
+  .kv-process {
+    border-top: 0.5px solid rgba($color: #fff, $alpha: 0.5);
+    padding-top: 3rem;
+    overflow: hidden;
+    &-ct {
+      animation-name: translation-event;
+      animation-duration: 80s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  @keyframes translation-event {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .celebration {
+    &-desc {
+      padding: 7rem 0;
+      .journey-title-1 {
+        padding-bottom: 2rem;
+        @include responsive(lg-screen) {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .agenda {
+    background-image: url("/assets/images/frame-agenda.png");
+    background-repeat: no-repeat;
+    background-position: 100% top;
+    background-color: rgba(249, 249, 245, 1);
+    color: $color-text-black;
+    .title {
+      color: $color-text-grey;
+      span {
+        color: $color-text-black;
+      }
+    }
+  }
+}
