@@ -21,7 +21,7 @@ export default function UploadImageBtn({
       <label className={`btn-frame`} htmlFor="crt-frame-input-upload">
         <img
           className="w-[25px] h-[25px] inline mr-5"
-          src="./assets/svg/upload-icon.svg"
+          src="/assets/svg/upload-icon.svg"
           alt=""
         />
         Chọn hình

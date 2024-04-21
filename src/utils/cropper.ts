@@ -3,10 +3,11 @@ export let cropper: Cropper | undefined = undefined;
 export const uploadImageToCrop = (
   idElem: string,
   file: FileList,
-  { isImage, url }: { isImage: boolean; url: string }
+  { isImage, url }: { isImage: boolean; url: string },
+  aspectRatio: any
 ) => {
   let config = {
-    aspectRatio: 1 / 1,
+    aspectRatio,
     autoCropArea: 1,
     zoomable: true,
     background: false,

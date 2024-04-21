@@ -10,6 +10,7 @@ export default function NextStep3Btn({
   setImgCaptureMobile,
   setWidthImageCapture,
   setStep,
+  setIsLabelMobile
 }: {
   btnDownload: boolean;
   widthImageCapture: number;
@@ -18,6 +19,7 @@ export default function NextStep3Btn({
   setImgCaptureMobile: Function;
   setWidthImageCapture: Function;
   setStep: Function;
+  setIsLabelMobile: Function
 }) {
   const handleNextStep3 = async () => {
     let image = getCroppedCanvas({
@@ -37,24 +39,24 @@ export default function NextStep3Btn({
       )) as any;
       const reader = new FileReader();
       reader.onload = (event) => {
+        setBtnDownload(false);
+        setLoading(false);
         setImgCaptureMobile(event.target?.result as string);
         // event.target?.result as string
         setWidthImageCapture(
           Number(import.meta.env.VITE_IMAGE_CAPTURE_UPLOAD_FB_IMAGE)
         );
+        setStep(4);
+        setTimeout(() => {
+          setIsLabelMobile(false);
+        }, 3000);
       };
       reader.readAsDataURL(file);
-      // setImgCaptureMobile(window.URL.createObjectURL(file));
-
-      // setImgCaptureMobile();
-      // setWidthImageCapture(
-      //   Number(import.meta.env.VITE_IMAGE_CAPTURE_UPLOAD_FB_IMAGE)
-      // );
-      setTimeout(() => {
-        setStep(4);
-      }, 2000);
+      // setTimeout(() => {
+      //   setStep(4);
+      // }, 2000);
     } else {
-      setStep(3);
+      setStep(4);
     }
   };
   return (
@@ -65,7 +67,7 @@ export default function NextStep3Btn({
     >
       <img
         className="w-[25px] h-[25px] inline mr-5 scale-[-1]"
-        src="./assets/svg/skip-icon.svg"
+        src="/assets/svg/skip-icon.svg"
         alt=""
       />
       TIẾP TỤC

@@ -34,7 +34,7 @@ export default function ShareFacebookBtn({
     >
       <img
         className="w-[25px] h-[25px] inline mr-5"
-        src="./assets/svg/share-icon.svg"
+        src="/assets/svg/share-icon.svg"
         alt=""
       />
       chia sẻ

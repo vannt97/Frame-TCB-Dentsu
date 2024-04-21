@@ -24,6 +24,7 @@ import CrtFrameCropperCapture from "./CrtFrameCropperCapture/CrtFrameCropperCapt
 import UploadImageAgainBtn from "./UploadImageAgainBtn/UploadImageAgainBtn.js";
 import UploadImageBtn from "./UploadImageBtn/UploadImageBtn.js";
 import NextStep3Btn from "./NextStep3Btn/NextStep3Btn.js";
+import { Frames } from "../../config/frame.js";
 // import { Helmet } from "react-helmet";
 export default function AvatarFrame() {
   const [step, setStep] = useState(1);
@@ -36,6 +37,7 @@ export default function AvatarFrame() {
   const [widthImageCapture, setWidthImageCapture] = useState(
     Number(import.meta.env.VITE_IMAGE_CAPTURE_DOWNLOAD_IMAGE)
   );
+  const [frameActive, setFrameActive] = useState<any>(null);
 
   const [isLabelMobile, setIsLabelMobile] = useState(true);
   // api UploadImage
@@ -72,10 +74,15 @@ export default function AvatarFrame() {
     mutationFn: serviceRemoveBg,
     onSuccess: (data) => {
       console.log("api RemoveBg data: ", data);
-      uploadImageToCrop("crt-frame-cropper-js", "" as unknown as FileList, {
-        isImage: true,
-        url: "data:image/png;base64," + data.base64,
-      });
+      uploadImageToCrop(
+        "crt-frame-cropper-js",
+        "" as unknown as FileList,
+        {
+          isImage: true,
+          url: "data:image/png;base64," + data.base64,
+        },
+        Frames[frameActive - 1].ratio
+      );
       setStep(2);
       setLoading(false);
       setBtnDownload(false);
@@ -85,10 +92,15 @@ export default function AvatarFrame() {
         type: "error",
         content: `Xử lý không remove background thành công`,
       });
-      uploadImageToCrop("crt-frame-cropper-js", "" as unknown as FileList, {
-        isImage: true,
-        url: base64InputUploadFile,
-      });
+      uploadImageToCrop(
+        "crt-frame-cropper-js",
+        "" as unknown as FileList,
+        {
+          isImage: true,
+          url: base64InputUploadFile,
+        },
+        Frames[frameActive - 1].ratio
+      );
       setStep(2);
       setLoading(false);
       setBtnDownload(false);
@@ -107,11 +119,16 @@ export default function AvatarFrame() {
       // import.meta.env.VITE_IS_REMOVE_BG
       // Window.IS_REMOVE_BG
       if ((Window as any).IS_REMOVE_BG == 0) {
-        uploadImageToCrop("crt-frame-cropper-js", e.target.files as FileList, {
-          isImage: false,
-          url: "",
-        });
-        setStep(2);
+        uploadImageToCrop(
+          "crt-frame-cropper-js",
+          e.target.files as FileList,
+          {
+            isImage: false,
+            url: "",
+          },
+          Frames[frameActive - 1].ratio
+        );
+        setStep(3);
         setLoading(false);
         setBtnDownload(false);
         return;
@@ -152,10 +169,10 @@ export default function AvatarFrame() {
         downloadFile(base64, "avatar");
         setLoading(false);
         setBtnDownload(false);
-        setWidthImageCapture(
-          Number(import.meta.env.VITE_IMAGE_CAPTURE_UPLOAD_FB_IMAGE)
-        );
-        setStep(4);
+        // setWidthImageCapture(
+        //   Number(import.meta.env.VITE_IMAGE_CAPTURE_UPLOAD_FB_IMAGE)
+        // );
+        // setStep(4);
       }, 2000);
     } catch (err) {
       messageApi.open({
@@ -165,10 +182,14 @@ export default function AvatarFrame() {
     }
   };
 
-  const handleBackStep2 = () => {
+  const handleBackStep3 = () => {
     (document.getElementById("img-capture") as HTMLImageElement).src = "";
+    if (deviceType() == "mobile") {
+      // window.URL.revokeObjectURL(imgCaptureMobile);
+      setImgCaptureMobile("");
+    }
     activeModeMove();
-    setStep(2);
+    setStep(3);
   };
 
   const handleBackStep1 = () => {
@@ -195,18 +216,39 @@ export default function AvatarFrame() {
       }, 1000);
     }
     //
-    if (
-      step == 4 &&
-      widthImageCapture == import.meta.env.VITE_IMAGE_CAPTURE_UPLOAD_FB_IMAGE
-    ) {
-      uploadImg();
-    }
+    // if (
+    //   step == 4 &&
+    //   widthImageCapture == import.meta.env.VITE_IMAGE_CAPTURE_UPLOAD_FB_IMAGE
+    // ) {
+    //   uploadImg();
+    // }
   }, [step, widthImageCapture]);
 
   const Btns = useMemo(() => {
     let jsx = <></>;
     switch (step) {
       case 2: {
+        jsx = (
+          <>
+            <div className="flex justify-between ">
+              <button onClick={handleBackStep1} className="btn-frame">
+                <img
+                  className="w-[25px] h-[25px] inline mr-5 "
+                  src="/assets/svg/skip-icon.svg"
+                  alt=""
+                />
+                trở lại
+              </button>
+              <UploadImageBtn
+                btnDownload={btnDownload}
+                handleUploadImage={handleUploadImage}
+              />
+            </div>
+          </>
+        );
+        break;
+      }
+      case 3: {
         jsx = (
           <div className="flex justify-between ">
             <UploadImageAgainBtn
@@ -221,38 +263,8 @@ export default function AvatarFrame() {
               setImgCaptureMobile={setImgCaptureMobile}
               setWidthImageCapture={setWidthImageCapture}
               setStep={setStep}
+              setIsLabelMobile={setIsLabelMobile}
             ></NextStep3Btn>
-          </div>
-        );
-        break;
-      }
-      case 3: {
-        jsx = (
-          <div className="flex justify-between ">
-            <button
-              disabled={btnDownload}
-              onClick={handleBackStep2}
-              className="btn-frame"
-            >
-              <img
-                className="w-[25px] h-[25px] inline mr-5 "
-                src="./assets/svg/skip-icon.svg"
-                alt=""
-              />
-              trở lại
-            </button>
-            <button
-              disabled={btnDownload}
-              onClick={handleDownLoad}
-              className="btn-frame"
-            >
-              <img
-                className="w-[25px] h-[25px] inline mr-5"
-                src="./assets/svg/download-icon.svg"
-                alt=""
-              />
-              tải hình
-            </button>
           </div>
         );
         break;
@@ -262,36 +274,89 @@ export default function AvatarFrame() {
           <div className="flex justify-between ">
             <button
               disabled={btnDownload}
-              onClick={handleBackStep1}
+              onClick={handleBackStep3}
               className="btn-frame"
             >
               <img
                 className="w-[25px] h-[25px] inline mr-5 "
-                src="./assets/svg/skip-icon.svg"
+                src="/assets/svg/skip-icon.svg"
                 alt=""
               />
-              thực hiện lại
+              trở lại
             </button>
-            <ShareFacebookBtn linkShare={linkShare} btnDownload={btnDownload} />
+            {deviceType() == "mobile" ? (
+              <></>
+            ) : (
+              <>
+                <button
+                  disabled={btnDownload}
+                  onClick={handleDownLoad}
+                  className="btn-frame"
+                >
+                  <img
+                    className="w-[25px] h-[25px] inline mr-5"
+                    src="/assets/svg/download-icon.svg"
+                    alt=""
+                  />
+                  tải hình
+                </button>
+              </>
+            )}
           </div>
         );
         break;
       }
+      // case 5: {
+      //   jsx = (
+      //     <div className="flex justify-between ">
+      //       <button
+      //         disabled={btnDownload}
+      //         onClick={handleBackStep1}
+      //         className="btn-frame"
+      //       >
+      //         <img
+      //           className="w-[25px] h-[25px] inline mr-5 "
+      //           src="./assets/svg/skip-icon.svg"
+      //           alt=""
+      //         />
+      //         thực hiện lại
+      //       </button>
+      //       <ShareFacebookBtn linkShare={linkShare} btnDownload={btnDownload} />
+      //     </div>
+      //   );
+      //   break;
+      // }
       default: {
         jsx = (
           <>
             <div className="flex justify-center ">
-              <UploadImageBtn
-                btnDownload={btnDownload}
-                handleUploadImage={handleUploadImage}
-              />
+              <button
+                onClick={() => {
+                  if (frameActive) {
+                    setStep(2);
+                  } else {
+                    messageApi.open({
+                      type: "error",
+                      content: `Vui Lòng Chọn Frame Ở Trên`,
+                    });
+                  }
+                }}
+                className="btn-frame"
+              >
+                <img
+                  className="w-[25px] h-[25px] inline mr-5 scale-[-1]"
+                  src="/assets/svg/skip-icon.svg"
+                  alt=""
+                />
+                TIẾP TỤC
+              </button>
             </div>
           </>
         );
       }
     }
     return jsx;
-  }, [step, btnDownload]);
+  }, [step, btnDownload, frameActive]);
 
   const renderLoading = useMemo(() => {
     if (isPendingRemoveBg || isPendingUploadImage || loading) {
@@ -332,46 +397,93 @@ export default function AvatarFrame() {
     );
   }, [isLabelMobile, imgCaptureMobile]);
 
+  const renderFrameDemo = useMemo(() => {
+    return Frames.map((item, index) => {
+      return (
+        <div key={index}>
+          <div
+            onClick={() => {
+              setFrameActive(item.id);
+            }}
+            className={`cursor-pointer crt-frame-avatar-item ${
+              item.id == frameActive ? "active" : ""
+            }`}
+          >
+            <img
+              className="h-auto md:h-full object-cover"
+              src={item.linkFrame}
+              alt=""
+            />
+          </div>
+          <p className="text-black text-center">{item.caption}</p>
+        </div>
+      );
+    });
+  }, [frameActive]);
+
+  useEffect(() => {
+    if (step == 2) {
+      (
+        document.querySelector(".crt-frame-cropper") as HTMLElement
+      )?.setAttribute(
+        "style",
+        `aspect-ratio: ${Frames[frameActive - 1].ratio}`
+      );
+    }
+  }, [step]);
   return (
     <section className="crt-frame">
       {contextHolder}
-      <div className="crt-frame-ct">
-        <div className="relative overflow-hidden">
-          <div className="crt-frame-cropper overflow-hidden">
-            <div
-              id="crt-frame-cropper-js"
-              className="crt-frame-cropper-js w-full h-full"
-            ></div>
-            <div className="crt-frame-cropper-border"></div>
-            <div className="crt-frame-cropper-item"></div>
-            <div className="absolute h-[1px] w-full bottom-0 left-0 bg-white"></div>
-            <div className="absolute h-[1px] w-full top-0 left-0 bg-white"></div>
-            {renderLoading}
-            {labelMobile}
+
+      {step == 1 ? (
+        <>
+          <p className="text-center mt-[2.5rem] md:mt-[0rem] mb-[2.5rem] text-black">
+            Chọn một trong những khung ảnh sau{" "}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mx-[2.5rem] crt-frame-avatar ">
+            {renderFrameDemo}
           </div>
-          {step == 4 ? (
-            <p className="text-center text-black mb-[1.5rem] ">
-              Truy cập vào Facebook để đổi avatar ngay nhé!
-            </p>
-          ) : (
-            <p className="mb-[2rem]"></p>
-          )}
-          <CrtFrameCropperCapture widthImageCapture={widthImageCapture} />
-        </div>
+        </>
+      ) : (
+        ""
+      )}
+
+      <div className="crt-frame-ct">
+        {step == 1 ? (
+          ""
+        ) : (
+          <div className="relative overflow-hidden">
+            <div className="crt-frame-cropper overflow-hidden">
+              <div
+                id="crt-frame-cropper-js"
+                className="crt-frame-cropper-js w-full h-full"
+              ></div>
+              <div
+                style={{
+                  backgroundImage: `url(${Frames[frameActive - 1].linkFrame})`,
+                }}
+                className="crt-frame-cropper-border"
+              ></div>
+              <div className="absolute h-[1px] w-full bottom-0 left-0 bg-white"></div>
+              <div className="absolute h-[1px] w-full top-0 left-0 bg-white"></div>
+              {renderLoading}
+              {labelMobile}
+            </div>
+            {/* {step == 4 ? (
+              <p className="text-center text-black mb-[1.5rem] ">
+                Truy cập vào Facebook để đổi avatar ngay nhé!
+              </p>
+            ) : (
+              <p className="mb-[2rem]"></p>
+            )} */}
+            <CrtFrameCropperCapture
+              frameActive={frameActive}
+              widthImageCapture={widthImageCapture}
+            />
+          </div>
+        )}
         {Btns}
       </div>
     </section>
   );
-}
-{
-  /* <div className="absolute bottom-0 right-0 opacity-0">
-        <label onClick={shareFBHandler} className="btn-frame" htmlFor="">
-          <img
-            className="w-[25px] h-[25px] inline mr-5"
-            src="./assets/svg/share-icon.svg"
-            alt=""
-          />
-          chia sẻ
-        </label>
-      </div> */
 }

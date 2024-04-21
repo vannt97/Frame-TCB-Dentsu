@@ -21,7 +21,7 @@ export default function UploadImageAgainBtn({
       <label className="btn-frame" htmlFor="crt-frame-input-upload-change">
         <img
           className="w-[25px] h-[25px] inline mr-5"
-          src="./assets/svg/upload-icon.svg"
+          src="/assets/svg/upload-icon.svg"
           alt=""
         />
         đổi hình
