@@ -499,7 +499,7 @@ export default function AvatarFrame() {
           >
             Chọn 1 trong 5 khung ảnh bên dưới & bấm tiếp tục{" "}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mx-[2.5rem] crt-frame-avatar ">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 px-[2.5rem] crt-frame-avatar w-full">
             {renderFrameDemo}
           </div>
         </>
