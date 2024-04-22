@@ -410,7 +410,7 @@ export default function AvatarFrame() {
               item.id == frameActive ? "active" : ""
             }`}
           >
-            <img className="h-full object-cover" src={item.linkFrame} alt="" />
+            <img className="h-full object-cover" src={item.linkFrameDemo} alt="" />
           </div>
           <div
             style={{
@@ -492,7 +492,7 @@ export default function AvatarFrame() {
             }}
             className="text-center mt-[2.5rem] md:mt-[0rem] mb-[2.5rem] text-black"
           >
-            Chọn một trong những khung ảnh sau{" "}
+            Chọn 1 trong 5 khung ảnh bên dưới & bấm tiếp tục{" "}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mx-[2.5rem] crt-frame-avatar ">
             {renderFrameDemo}

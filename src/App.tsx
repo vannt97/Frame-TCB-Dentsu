@@ -10,7 +10,6 @@ import ScrollToTop from "./hooks/ScrollToTop";
 import DetailStory from "./pages/DetailStory/DetailStory";
 import { PATH } from "./constants/paths";
 import AvatarFrame from "./pages/AvatarFrame/AvatarFrame.js";
-import AvatarDemo from "./pages/AvatarDemo/AvatarDemo.js";
 
 function App() {
   const { i18n } = useTranslation();
@@ -21,7 +20,6 @@ function App() {
       <ScrollToTop />
       <Switch>
         <Route exact path={"/"} component={AvatarFrame} />
-        {/* <Route exact path={"/demo"} component={AvatarDemo} /> */}
       </Switch>
     </BrowserRouter>
   );
