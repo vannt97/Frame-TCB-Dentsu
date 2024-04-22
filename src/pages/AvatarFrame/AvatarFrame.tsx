@@ -154,6 +154,7 @@ export default function AvatarFrame() {
         content: errorFile,
       });
       setBtnDownload(false);
+      setLoading(false);
     }
   };
 
@@ -410,7 +411,11 @@ export default function AvatarFrame() {
               item.id == frameActive ? "active" : ""
             }`}
           >
-            <img className="h-full object-cover" src={item.linkFrameDemo} alt="" />
+            <img
+              className="h-full object-cover"
+              src={item.linkFrameDemo}
+              alt=""
+            />
           </div>
           <div
             style={{
