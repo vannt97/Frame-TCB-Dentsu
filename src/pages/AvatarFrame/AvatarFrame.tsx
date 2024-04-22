@@ -25,6 +25,7 @@ import UploadImageAgainBtn from "./UploadImageAgainBtn/UploadImageAgainBtn.js";
 import UploadImageBtn from "./UploadImageBtn/UploadImageBtn.js";
 import NextStep3Btn from "./NextStep3Btn/NextStep3Btn.js";
 import { Frames } from "../../config/frame.js";
+import ScrollToBottom from "../../components/ScrollToBottom/ScrollToBottom.js";
 // import { Helmet } from "react-helmet";
 export default function AvatarFrame() {
   const [step, setStep] = useState(1);
@@ -380,7 +381,7 @@ export default function AvatarFrame() {
               alt=""
               className={`z-[4] absolute bottom-0 left-0 w-full h-full object-contain `}
             />
-            <div className="z-[10] pointer-events-none absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+            {/* <div className="z-[10] pointer-events-none absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
               <p
                 className={`${
                   isLabelMobile ? "" : "hidden"
@@ -388,7 +389,7 @@ export default function AvatarFrame() {
               >
                 Ấn giữ vào hình để tải hình về máy
               </p>
-            </div>
+            </div> */}
           </>
         ) : (
           <></>
@@ -409,13 +410,16 @@ export default function AvatarFrame() {
               item.id == frameActive ? "active" : ""
             }`}
           >
-            <img
-              className="h-auto md:h-full object-cover"
-              src={item.linkFrame}
-              alt=""
-            />
+            <img className="h-full object-cover" src={item.linkFrame} alt="" />
           </div>
-          <p className="text-black text-center">{item.caption}</p>
+          <div
+            style={{
+              textWrap: "balance",
+            }}
+            className="text-black text-center"
+          >
+            {deviceType() == "desktop" ? item.caption : item.captionMobile}
+          </div>
         </div>
       );
     });
@@ -431,13 +435,63 @@ export default function AvatarFrame() {
       );
     }
   }, [step]);
+
+  const renderGuide = useMemo(() => {
+    if (step == 3) {
+      if (deviceType() == "mobile") {
+        return (
+          <p
+            style={{
+              textWrap: "balance",
+            }}
+            className="text-center mt-[2.5rem]   text-black"
+          >
+            Dùng ngón tay để phóng to/thu nhỏ/căn chỉnh khung hình
+          </p>
+        );
+      }
+
+      if (deviceType() == "desktop") {
+        return (
+          <p
+            style={{
+              textWrap: "balance",
+            }}
+            className="text-center mt-[2.5rem]   text-black"
+          >
+            Dùng chuột để phóng to/thu nhỏ/căn chỉnh khung hình
+          </p>
+        );
+      }
+    }
+    if (step == 4) {
+      if (deviceType() == "mobile") {
+        return (
+          <p
+            style={{
+              textWrap: "balance",
+            }}
+            className="text-center mt-[2.5rem]   text-black"
+          >
+            Ấn giữ vào hình để tải hình về máy
+          </p>
+        );
+      }
+    }
+    return;
+  }, [step]);
   return (
     <section className="crt-frame">
       {contextHolder}
-
+      {renderGuide}
       {step == 1 ? (
         <>
-          <p className="text-center mt-[2.5rem] md:mt-[0rem] mb-[2.5rem] text-black">
+          <p
+            style={{
+              textWrap: "balance",
+            }}
+            className="text-center mt-[2.5rem] md:mt-[0rem] mb-[2.5rem] text-black"
+          >
             Chọn một trong những khung ảnh sau{" "}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mx-[2.5rem] crt-frame-avatar ">
@@ -484,6 +538,7 @@ export default function AvatarFrame() {
         )}
         {Btns}
       </div>
+      {step == 1 ? <ScrollToBottom /> : ""}
     </section>
   );
 }

@@ -9,6 +9,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  scroll-behavior: smooth;
 }
 body {
   font-family: "NotoSans";
@@ -20,6 +21,7 @@ body {
   background-color: $bg-black-2;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 input,
