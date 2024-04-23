@@ -15,6 +15,7 @@ import {
   deviceType,
   fileToBase64,
   reduceSizeCustom,
+  testAjax,
   validationSingleFile,
 } from "../../utils/common.js";
 import { downloadFile } from "../../utils/download.js";
@@ -485,6 +486,10 @@ export default function AvatarFrame() {
     }
     return;
   }, [step]);
+
+  // useEffect(() => {
+  //   testAjax();
+  // }, []);
   return (
     <section className="crt-frame">
       {contextHolder}
